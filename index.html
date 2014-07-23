@@ -5,23 +5,24 @@
   <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
   <script src="http://builds.emberjs.com/tags/v1.5.1/ember.js"></script>
   <script src="app.js"></script>
-  <title>JS Bin</title>
+  <title>Math Monsters</title>
 </head>
 <body>
-    <!-- an outlet!  Known in angular-land as a VIEW HOLE. -->
-    <!-- I like the name view hole.  It's a hole that looks into an entirely new world -->
-    <!-- in this case, the world of the monsters route -->
+
   <script type="text/x-handlebars">
     <h2> MonsterDex</h2>
     {{outlet}}
   </script>
 
-  <!-- notice the data-template-name is "monsters" -->
-  <!-- Ember will magically know it's supposed to be for the "monsters" route -->
+<!-- This uses the model defined in MonstersRoute -->
+<!-- #each is a handlebars helper -->
   <script type="text/x-handlebars" data-template-name="monsters">
     <p>Monster list
-    <p>There will be monsters here
-    <p>Watch out
+    <ul>
+      {{#each monster in model}}
+        <li>{{monster}}</li>
+      {{/each}}
+    </ul>
   </script>
 </body>
 </html>
