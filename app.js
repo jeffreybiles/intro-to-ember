@@ -4,12 +4,9 @@ App.Router.map(function(){
   this.resource('monsters');
 });
 
-// MonstersRoute is an Ember Route
-// Ember.Route has lots of defaults, but you can overwrite any of them
-// Here we're overwriting model
 App.MonstersRoute = Ember.Route.extend({
-  // this model will be used in the monsters template
+  // model is now an array of object literals
   model: function(){
-    return ['Sparkachu', 'Charember', 'Blastasaur'];
+    return [{name:'Sparkachu', level:3}, {name: 'Charember', level: 5}, {name: 'Blastasaur', level: 28}];
   }
 });

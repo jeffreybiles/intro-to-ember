@@ -14,14 +14,14 @@
     {{outlet}}
   </script>
 
-<!-- This uses the model defined in MonstersRoute -->
-<!-- #each is a handlebars helper -->
+<!-- each monster is now an object -->
+<!-- name and level are properties on the object -->
   <script type="text/x-handlebars" data-template-name="monsters">
     <p>Monster list
     <ul>
-      {{#each monster in model}}
-        <li>{{monster}}</li>
-      {{/each}}
+    {{#each monster in model}}
+      <li>{{monster.name}}, level {{monster.level}}</li>
+    {{/each}}
     </ul>
   </script>
 </body>
