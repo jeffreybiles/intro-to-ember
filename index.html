@@ -5,6 +5,7 @@
   <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v1.3.0.js"></script>
   <script src="http://builds.emberjs.com/tags/v1.5.1/ember.js"></script>
   <script src="app.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
   <title>Math Monsters</title>
 </head>
 <body>
@@ -14,13 +15,17 @@
     {{outlet}}
   </script>
 
-<!-- each monster is now an object -->
-<!-- name and level are properties on the object -->
+<!-- use bind-attr within html tags -->
+<!-- this is so that the metamorph tags usually inserted by ember don't break the layout -->
   <script type="text/x-handlebars" data-template-name="monsters">
     <p>Monster list
     <ul>
     {{#each monster in model}}
-      <li>{{monster.name}}, level {{monster.level}}</li>
+      <li>
+        {{monster.name}}, level {{monster.level}}
+        <br>
+        <img {{bind-attr src=monster.imageUrl}} />
+      </li>
     {{/each}}
     </ul>
   </script>
