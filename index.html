@@ -6,32 +6,41 @@
   <script src="http://builds.emberjs.com/tags/v1.5.1/ember.js"></script>
   <script src="http://cdnjs.cloudflare.com/ajax/libs/ember-data.js/1.0.0-beta.7/ember-data.min.js"></script>
   <script src="app.js"></script>
+  <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="style.css">
   <title>Math Monsters</title>
 </head>
 <body>
 
+<!-- container is for bootstrap -->
   <script type="text/x-handlebars">
+  <div class="container">
     <h2> MonsterDex</h2>
     {{outlet}}
+  </div>
   </script>
 
-<!-- #link-to helper takes a path and an object -->
-<!-- It wraps whatever comes between it and the closing /link-to tag -->
+<!-- row and col-xx-# classes are for the bootstrap 3 grid system -->
   <script type="text/x-handlebars" data-template-name="monsters">
-    <p>Monster list
-    <ul>
-    {{#each monster in model}}
-      <li>
-        {{#link-to 'monster' monster}}
-          {{monster.name}}, level {{monster.level}}
-          <br>
-          <img {{bind-attr src=monster.imageUrl}} />
-        {{/link-to}}
-      </li>
-    {{/each}}
-    </ul>
-    {{outlet}}
+    <div class="row">
+      <div class="col-sm-3 col-xs-6">
+        <p>Monster list
+        <ul>
+        {{#each monster in model}}
+          <li>
+            {{#link-to 'monster' monster}}
+              {{monster.name}}, level {{monster.level}}
+              <br>
+              <img {{bind-attr src=monster.imageUrl}} />
+            {{/link-to}}
+          </li>
+        {{/each}}
+        </ul>
+      </div>
+      <div class="col-sm-9 col-xs-6">
+        {{outlet}}
+      </div>
+    </div>
   </script>
 
   <!-- the model is, by default, that of the monster specified in the url -->

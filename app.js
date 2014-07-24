@@ -4,8 +4,6 @@ App.ApplicationAdapter = DS.FixtureAdapter.extend({})
 
 App.Router.map(function(){
   this.resource('monsters', {path: 'monsters'}, function(){
-    // nested resource
-    // the full path will be '/monsters/:monster_id'
     this.resource('monster', {path: ':monster_id'});
   });
 });
