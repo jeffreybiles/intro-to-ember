@@ -12,7 +12,6 @@
 </head>
 <body>
 
-<!-- container is for bootstrap -->
   <script type="text/x-handlebars">
   <div class="container">
     <h2> MonsterDex</h2>
@@ -20,14 +19,15 @@
   </div>
   </script>
 
-<!-- row and col-xx-# classes are for the bootstrap 3 grid system -->
+<!-- list-unstyled is a bootstrap class that takes away the bullets -->
+<!-- monster and monsters classes are defined in style.css -->
   <script type="text/x-handlebars" data-template-name="monsters">
     <div class="row">
       <div class="col-sm-3 col-xs-6">
         <p>Monster list
-        <ul>
+        <ul class="monsters list-unstyled">
         {{#each monster in model}}
-          <li>
+          <li class="monster">
             {{#link-to 'monster' monster}}
               {{monster.name}}, level {{monster.level}}
               <br>
@@ -43,9 +43,20 @@
     </div>
   </script>
 
-  <!-- the model is, by default, that of the monster specified in the url -->
+  <!-- monster-card class is defined in style.css -->
   <script type="text/x-handlebars" data-template-name="monster">
-    <h2>Monster Show Page for {{name}}</h2>
+    <div class="monster-card">
+      <span class="name">{{name}}</span>
+      <span>Level: {{level}}</span>
+
+      <img {{bind-attr src=imageUrl}} />
+    </div>
+  </script>
+
+      <script type="text/x-handlebars" data-template-name="monsters/index">
+        Select a monster to see their full stats
+      </script>
+    </body>
   </script>
 </body>
 </html>
