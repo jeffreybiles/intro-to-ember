@@ -16,17 +16,27 @@
     {{outlet}}
   </script>
 
+<!-- #link-to helper takes a path and an object -->
+<!-- It wraps whatever comes between it and the closing /link-to tag -->
   <script type="text/x-handlebars" data-template-name="monsters">
     <p>Monster list
     <ul>
     {{#each monster in model}}
       <li>
-        {{monster.name}}, level {{monster.level}}
-        <br>
-        <img {{bind-attr src=monster.imageUrl}} />
+        {{#link-to 'monster' monster}}
+          {{monster.name}}, level {{monster.level}}
+          <br>
+          <img {{bind-attr src=monster.imageUrl}} />
+        {{/link-to}}
       </li>
     {{/each}}
     </ul>
+    {{outlet}}
+  </script>
+
+  <!-- the model is, by default, that of the monster specified in the url -->
+  <script type="text/x-handlebars" data-template-name="monster">
+    <h2>Monster Show Page for {{name}}</h2>
   </script>
 </body>
 </html>
